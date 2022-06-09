@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@page import="web.dto.Notice"%>
 <%@page import="web.dto.NoticeFile"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -20,7 +20,6 @@ $(document).ready(function() {
 	//게시글 수정 버튼
 	$("#btnUpdate").click(function() {
 		console.log("클릭")
-		
 		$(location).attr("href", "<%=request.getContextPath() %>/board/noticeupdate?idx=<%=viewNoticeBoard.getIdx() %>");
 	})
 	
@@ -81,7 +80,6 @@ a:hover {
 	padding-right: 7px;
  	background: #EFF0F2;
 	color: black; 
-	
  	border-radius: 5px; 
  	margin: 5px;
 }
@@ -97,51 +95,64 @@ a:hover {
 #btnDelete {
 	float: right;
 }
-
 </style>
+
 <br><br><br><br>
+
 <div class="container">
 
 <br>
+
 <a href="<%=request.getContextPath() %>/board/noticelist">자유 게시판 ></a>
+
 <h2><%=viewNoticeBoard.getNoticeTitle() %></h2>
-<div><%=viewNoticeBoard.getUsernick() %> (작성자)</div>
-<div style="font-size: 12px; color: #ccc;"><%=viewNoticeBoard.getCreateDate() %> 조회 <%=viewNoticeBoard.getNoticeHits() %></div>
 
-<hr>
+	<div><%=viewNoticeBoard.getUsernick() %> (작성자)</div>
+	<div style="font-size: 12px; color: #ccc;"><%=viewNoticeBoard.getCreateDate() %> 조회 <%=viewNoticeBoard.getNoticeHits() %></div>
 
-<div style="margin: 5px;"><%=viewNoticeBoard.getNoticeContent() %></div>
-<br>
-<hr>
+	<hr>
 
-<!-- 첨부파일 -->
-<div style="margin: 5px;">
-첨부파일 목록
-<%	if( noticeFile != null ) { %>
-<a href="<%=request.getContextPath() %>/upload/<%=noticeFile.getFileSto() %>"
- download="<%=noticeFile.getFileOri() %>">
-	<%=noticeFile.getFileOri() %>
-</a>
-<%	} %>
-</div>
-<hr>
+	<div style="margin: 5px;"><%=viewNoticeBoard.getNoticeContent() %></div>
+	
+	<br>
+	
+	<hr>
 
-<div class="text-center">
-	<button id="btnList" class="btnMenu">목록</button>
-	<%	if( Integer.parseInt(String.valueOf(session.getAttribute("user_no"))) == viewNoticeBoard.getUserno() 
-			|| String.valueOf(session.getAttribute("user_rank")).equals("0") ) { %>
-	<button id="btnDelete" class="btnMenu">삭제</button>
-	<%	} %>
-	<%	if( String.valueOf(session.getAttribute("user_rank")).equals("0") ){ %>
-	<button id="btnUpdate" class="btnMenu">수정</button>
-	<%	} %>
-</div>
-<br><br>
-<hr>
+	<!-- 첨부파일 -->
+	<div style="margin: 5px;">
+		첨부파일 목록
+		<%	if( noticeFile != null ) { %>
+			<a href="<%=request.getContextPath() %>/upload/<%=noticeFile.getFileSto() %>"
+				 download="<%=noticeFile.getFileOri() %>">
+				<%=noticeFile.getFileOri() %>
+			</a>
+		<%	} %>
+	</div>
+	
+	<hr>
+
+	<div class="text-center">
+		<button id="btnList" class="btnMenu">목록</button>
+		
+		<%	if( Integer.parseInt(String.valueOf(session.getAttribute("user_no"))) == viewNoticeBoard.getUserno() 
+				|| String.valueOf(session.getAttribute("user_rank")).equals("0") ) { %>
+		
+			<button id="btnDelete" class="btnMenu">삭제</button>
+		<%	} %>
+		
+		<%	if( String.valueOf(session.getAttribute("user_rank")).equals("0") ){ %>
+			<button id="btnUpdate" class="btnMenu">수정</button>
+		<%	} %>
+	</div>
+	
+	<br><br>
+
+	<hr>
 
 <%@ include file="../comment/noticecommview.jsp" %>
 
-</div><!-- .container -->
+</div><!-- container -->
+
 <br><br><br><br><br><br>
 
 <%@ include file="../layout/footer.jsp" %>

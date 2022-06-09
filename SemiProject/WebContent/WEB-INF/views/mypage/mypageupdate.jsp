@@ -1,8 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@page import="web.dto.User"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -88,7 +87,6 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-
 #btnUpdate, #btnMain {
 	border: 4px solid #FF792A;
 	border-radius: 10px;
@@ -98,109 +96,117 @@ $(document).ready(function() {
 	width: 90px;
 	height: 30px;
 }
-
 </style>
 
 <div class="container" style="height:800px;">
 
 <br><br><br><br><br><br>
+
 <h2 style="margin-left: 20px;">회원 정보</h2>
 
 <hr style="height:3px; border:none; color:#ccc; background-color:#ccc;">
 
 <br><br>
-<div class="join_form_div" style="border: 0; width: 598px; margin: 0 auto; text-aling: center;	">
-<br><br>
-<br>
-<br>
-<div class="mypage">
-<form action="/mypage/mypageupdate" method="post" name="mypageform">
-	<table style="width: 100%; margin: 0 auto; font-size: 18px; border: 1px solid #888; border-left: 0; border-right: 0;">
-	<tr>
-		<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
-			아이디
-		</th>
-	<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
-		<%=viewMypageUp.getUser_id()%>
-	</td>
-	</tr>
-	
-	<tr>
-		<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
-			비밀번호
-		</th>
-		<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
-			<input type="password" id="user_pw" name="user_pw"/>
-		</td>
-	</tr>
 
-	<tr>
-		<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
-			비밀번호 확인
-		</th>
-		<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
-			<input type="password" id="user_pw_check" name="user_pw_check"/>
-		</td>
-	</tr>
+	<div class="join_form_div" style="border: 0; width: 598px; margin: 0 auto; text-aling: center;	">
 	
-	<tr>
-		<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
-			닉네임
-		</th>
-		<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
-		<div>
-			<input type="text" name="user_nick" id ="user_nick" value="<%=viewMypageUp.getUser_nick()%>"class="form-control" style="width: 250px; display: inline-block;"/>
-			<button type="button" id="btnDuplicate" style="display: inline-block;">중복확인</button> 
-		</div>
-			<div id="duplMsg" style="position: relative; "></div>
-		</td>
-	</tr>
+	<br><br><br><br>
 	
-	<tr>
+		<div class="mypage">
+		<form action="/mypage/mypageupdate" method="post" name="mypageform">
+			<table style="width: 100%; margin: 0 auto; font-size: 18px; border: 1px solid #888; border-left: 0; border-right: 0;">
+			<tr>
+				<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
+					아이디
+				</th>
+				
+				<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
+					<%=viewMypageUp.getUser_id()%>
+				</td>
+			</tr>
+			
+			<tr>
+				<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
+					비밀번호
+				</th>
+				
+				<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
+					<input type="password" id="user_pw" name="user_pw"/>
+				</td>
+			</tr>
 		
-	<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
-		이메일
-	</th>
-		<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
-		<input type="email" id="user_email" name="user_email" value="<%=viewMypageUp.getUser_email()%>"/>
-	</td>
-
-	</tr>
+			<tr>
+				<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
+					비밀번호 확인
+				</th>
+				
+				<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
+					<input type="password" id="user_pw_check" name="user_pw_check"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
+					닉네임
+				</th>
+				
+				<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
+					<div>
+						<input type="text" name="user_nick" id ="user_nick" value="<%=viewMypageUp.getUser_nick()%>"class="form-control" style="width: 250px; display: inline-block;"/>
+						<button type="button" id="btnDuplicate" style="display: inline-block;">중복확인</button> 
+					</div>
+					
+					<div id="duplMsg" style="position: relative; "></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
+					이메일
+				</th>
+				
+				<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
+					<input type="email" id="user_email" name="user_email" value="<%=viewMypageUp.getUser_email()%>"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
+					전화번호
+				</th>
+				
+				<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
+					<input type="tel" maxlength="11" id="user_phone" name="user_phone" value="<%=viewMypageUp.getUser_phone()%>"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
+					성별
+				</th>
+		
+				<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
+					<%=viewMypageUp.getUser_gender()%>
+				</td>
+			</tr>
+			</table>
+		</form>
+		
+		<br><br>
+		
+			<div style="text-align: center;">
+				<button type="button" id="btnUpdate"><b>수정</b></button>
+				<button name="main" id="btnMain" onclick="location.href='<%=request.getContextPath() %>/'"><b>메인화면</b></button>
+			</div>
+			
+			<br><br>
+			
+		</div>
 	
-	<tr>
-	<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
-		전화번호
-	</th>
-	<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
-		<input type="tel" maxlength="11" id="user_phone" name="user_phone" value="<%=viewMypageUp.getUser_phone()%>"/>
-	</td>
-
-	</tr>
-	
-	<tr>
-		<th style="border: 1px solid #888; border-left: 0; border-right: 0; background: #ccc;">
-			성별
-		</th>
-
-		<td style="border: 1px solid #888; border-left: 0; border-right: 0;">
-			<%=viewMypageUp.getUser_gender()%>
-		</td>
-</tr>
-	
-</table>
-</form>
-	<br>
-	<br>
-	<div style="text-align: center;">
-		<button type="button" id="btnUpdate"><b>수정</b></button>
-		<button name="main" id="btnMain" onclick="location.href='<%=request.getContextPath() %>/'"><b>메인화면</b></button>
 	</div>
-	<br>
-	<br>
-	</div>
-</div>
-
+	
 </div><!-- .container -->
+
 <br><br><br><br><br><br><br><br>
 
 <%@ include file="../layout/footer.jsp" %>

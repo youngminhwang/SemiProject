@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -40,7 +39,6 @@ $(document).ready(function() {
 		});
 	})
 
-	
 	//취소 버튼 클릭 시 뒤로가기
 	$("#btnCancel").click(function() {
 		history.go(-1);
@@ -48,6 +46,7 @@ $(document).ready(function() {
 	})
 	
 })
+
 function login(){  
 // 	$(this).parents("form").submit();
 	loginForm.submit();
@@ -78,22 +77,23 @@ form {
 	margin-bottom: 40px;
 	margin-top: 20px;
 }
-
-
 </style>
 
 <div class="container" style="height:830px;">
-<br><br><br>
 
-<br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 
 <form action="./login" method="post" class="form-horizontal" name=loginForm>
 
 <div style="border: 1px solid #ccc; border-radius: 10px;">
-<h2 style="margin-left: 20px;">로그인</h2>
-<br>
+	
+	<h2 style="margin-left: 20px;">로그인</h2>
+	
+	<br>
+	
 	<div class="form-group" style="margin-left: 50px;">
 		<label for="user_id" class="control-label col-xs-2"><b>아이디</b></label>
+		
 		<div class="col-xs-10">
 			<input type="text" id="user_id" name="user_id" class="form-control">
 		</div>
@@ -101,10 +101,12 @@ form {
 
 	<div class="form-group" style="margin-left: 50px;">
 		<label for="user_pw" class="control-label col-xs-2"><b>패스워드</b></label>
+		
 		<div class="col-xs-10">
 			<input type="text" id="user_pw" name="user_pw" class="form-control">
 		</div>
 	</div>
+	
 	<div class="text-center">
 		<button type="button" id="btnLogin">로그인</button>
 	</div>

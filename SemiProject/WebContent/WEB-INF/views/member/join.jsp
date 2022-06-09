@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -132,25 +131,27 @@ $(document).ready(function() {
 	$('#user_id').focusout(function() {
 		if($("#user_id").val().length < 3 || $("#user_id").val().length > 10) {
 			alert("아이디는 3글자 이상 10글자 이하입니다");
+			return false;
 	  	}
 	});
 	
 	$('#user_pw_check').focusout(function() {
 		if( $("#user_pw").val() != $("#user_pw_check").val() ) {
            alert("비밀번호를 확인하세요");
+           return false;
 	  	}
 	});
 	
 	$("#btnJoin").click(function() {
 		if($("#user_id").val().length == 0) {
 	           alert("아이디를 입력하세요");
-	           $("#user_id").focus();
+	         
 	           return false;
 	    }
 		
 		if($("#user_id").val().length < 3 || $("#user_id").val().length > 10) {
 	           alert("아이디는 3글자 이상 10글자 이하입니다");
-	           $("#user_id").focus();
+	           
 	           return false;
 	    }       
 		
@@ -175,13 +176,13 @@ $(document).ready(function() {
         
         if($("#user_pw_check").val().length == 0) {
            alert("비밀번호를 확인하세요");
-           $("#user_pw_check").focus();
+        
            return false;
         }
         
         if( $("#user_pw").val() != $("#user_pw_check").val() ) {
            alert("비밀번호 확인이 다릅니다");
-           $("#user_pw_check").focus();
+       
            return false;
         }
 		

@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@page import="web.dto.Free"%>
 <%@page import="web.dto.FreeFile"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -20,7 +20,9 @@ function submitContents( elClickedObj ) {
 	
 	try {
 		elClickedObj.form.submit();
-	} catch(e) {}
+	} catch(e) {
+		
+	}
 	
 }
 </script>
@@ -35,14 +37,13 @@ $(document).ready(function() {
 		submitContents( $("#btnUpdate") )
 		
 		$("form").submit();
+		
 	});
 	
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
 		history.go(-1);
 	});
-	
-	
 	
 	//파일이 없을 경우
 	if(<%=freeFile != null %>) {
@@ -89,7 +90,6 @@ $(document).ready(function() {
 	padding-right: 7px;
  	background: #EFF0F2;
 	color: black; 
-	
  	border-radius: 5px; 
  	margin: 5px;
  	float: right;
@@ -99,43 +99,59 @@ $(document).ready(function() {
 <div class="container">
 
 <br><br><br><br>
+
 <h3>게시글 수정</h3>
 <hr>
 
 <div>
-<form action="/board/freeupdate" method="post" enctype="multipart/form-data">
-<input type="hidden" name="idx" value="<%=updateFreeBoard.getIdx() %>" />
+	<form action="/board/freeupdate" method="post" enctype="multipart/form-data">
+		
+		<input type="hidden" name="idx" value="<%=updateFreeBoard.getIdx() %>" />
+		
+		<textarea id="title" name="title"><%=updateFreeBoard.getFreeTitle() %></textarea>
+		
+		<%@ include file="../layout/boardrule.jsp" %>
 
-<textarea id="title" name="title"><%=updateFreeBoard.getFreeTitle() %></textarea>
+		<textarea id="content" name="content"><%=updateFreeBoard.getFreeContent() %></textarea>
+		
+		<!-- <textarea>태그에 스마트에디터2를 스킨 적용하는 스크립트 -->
+		<script type="text/javascript">
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "content", //에디터가 적용될 <textarea>의 id를 입력
+			sSkinURI: "/resources/se2/SmartEditor2Skin.html",
+			fCreator: "createSEditor2"
+		})
+		</script>
+		
+		<hr>
 
-<%@ include file="../layout/boardrule.jsp" %>
+	<div><!-- 첨부파일 -->
+	
+		<div id="beforeFile">
+			<%	if( freeFile != null ) { %>
+				
+				기존 첨부파일: 
+				<a href="<%=request.getContextPath() %>/upload/<%=freeFile.getFileSto() %>" 
+					download="<%=freeFile.getFileOri() %>"><%=freeFile.getFileOri() %>
+				</a>
+			
+				<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
+			
+			<%	} %>
+		</div>
 
-<textarea id="content" name="content"><%=updateFreeBoard.getFreeContent() %></textarea>
+		<div id="afterFile">
+			새 첨부파일:
+			<input type="file" name="file" />
+		</div>
 
-<hr>
+	</div><!-- 첨부파일 end -->
+		
+	<br>
 
-<!-- 첨부파일 -->
-<div>
-
-	<div id="beforeFile">
-<%	if( freeFile != null ) { %>
-		기존 첨부파일: 
-		<a href="<%=request.getContextPath() %>/upload/<%=freeFile.getFileSto() %>"
-		 download="<%=freeFile.getFileOri() %>">
-			<%=freeFile.getFileOri() %>
-		</a>
-		<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
-<%	} %>
-	</div>
-
-	<div id="afterFile">
-		새 첨부파일:
-		<input type="file" name="file" />
-	</div>
-</div>
-
-<br>
-</form>
+	</form>
 </div>
 
 <hr>
@@ -145,19 +161,8 @@ $(document).ready(function() {
 	<button type="button" id="btnCancel" class="btnMenu">취소</button>
 </div>
 
-<!-- .container -->
-</div>
+</div><!-- container end -->
+
 <br><br><br><br><br><br>
-
-
-<script type="text/javascript">
-var oEditors = [];
-nhn.husky.EZCreator.createInIFrame({
-	oAppRef: oEditors,
-	elPlaceHolder: "content", //에디터가 적용될 <textarea>의 id를 입력
-	sSkinURI: "/resources/se2/SmartEditor2Skin.html",
-	fCreator: "createSEditor2"
-})
-</script>
 
 <%@ include file="../layout/footer.jsp" %>

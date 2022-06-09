@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@page import="web.dto.Notice"%>
 <%@page import="web.dto.NoticeFile"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -20,7 +20,9 @@ function submitContents( elClickedObj ) {
 	
 	try {
 		elClickedObj.form.submit();
-	} catch(e) {}
+	} catch(e) {
+		
+	}
 	
 }
 </script>
@@ -35,14 +37,13 @@ $(document).ready(function() {
 		submitContents( $("#btnUpdate") )
 		
 		$("form").submit();
+		
 	});
 	
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
 		history.go(-1);
 	});
-	
-	
 	
 	//파일이 없을 경우
 	if(<%=noticeFile != null %>) {
@@ -89,74 +90,78 @@ $(document).ready(function() {
 	padding-right: 7px;
  	background: #EFF0F2;
 	color: black; 
-	
  	border-radius: 5px; 
  	margin: 5px;
  	float: right;
 }
 </style>
+
 <br><br><br><br>
+
 <div class="container">
 
 <br>
+
 <h3>게시글 수정</h3>
-<hr>
-
-<div>
-<form action="/board/noticeupdate" method="post" enctype="multipart/form-data">
-
-<textarea id="title" name="title"><%=updateNoticeBoard.getNoticeTitle() %></textarea>
-
-<%@ include file="../layout/boardrule.jsp" %>
-
-<textarea id="content" name="content"><%=updateNoticeBoard.getNoticeContent() %></textarea>
 
 <hr>
 
-<!-- 첨부파일 -->
-<div>
+	<div>
+		<form action="/board/noticeupdate" method="post" enctype="multipart/form-data">
+		
+		<textarea id="title" name="title"><%=updateNoticeBoard.getNoticeTitle() %></textarea>
+		
+		<%@ include file="../layout/boardrule.jsp" %>
+		
+		<textarea id="content" name="content"><%=updateNoticeBoard.getNoticeContent() %></textarea>
+		
+		<script type="text/javascript">
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "content", //에디터가 적용될 <textarea>의 id를 입력
+			sSkinURI: "/resources/se2/SmartEditor2Skin.html",
+			fCreator: "createSEditor2"
+		})
+		</script>
 
-	<div id="beforeFile">
-<%	if( noticeFile != null ) { %>
-		기존 첨부파일
-		<a href="<%=request.getContextPath() %>/upload/<%=noticeFile.getFileSto() %>"
-		 download="<%=noticeFile.getFileOri() %>">
-			<%=noticeFile.getFileOri() %>
-		</a>
-		<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
-<%	} %>
+		<hr>
+		
+		<!-- 첨부파일 -->
+		<div>
+
+			<div id="beforeFile">
+				<%	if( noticeFile != null ) { %>
+					기존 첨부파일
+					<a href="<%=request.getContextPath() %>/upload/<%=noticeFile.getFileSto() %>"
+						download="<%=noticeFile.getFileOri() %>">
+						<%=noticeFile.getFileOri() %>
+					</a>
+						
+					<span id="delFile" style="color:red; font-weight: bold; cursor: pointer;">X</span>
+				<%	} %>
+			</div>
+
+			<div id="afterFile">
+				새 첨부파일
+				<input type="file" name="file" />
+			</div>
+		</div>
+
+		<br>
+		
+		</form>
 	</div>
 
-	<div id="afterFile">
-		새 첨부파일
-		<input type="file" name="file" />
+	<hr>
+
+	<div class="text-center">	
+		<button type="button" id="btnCancel" class="btnMenu">취소</button>
+		<button type="button" id="btnUpdate" class="btnMenu">수정</button>
 	</div>
-</div>
 
-<br>
-</form>
-</div>
+</div><!-- container -->
 
-<hr>
-
-<div class="text-center">	
-	<button type="button" id="btnCancel" class="btnMenu">취소</button>
-	<button type="button" id="btnUpdate" class="btnMenu">수정</button>
-</div>
-
-<!-- .container -->
-</div>
 <br><br><br><br><br><br>
-
-
-<script type="text/javascript">
-var oEditors = [];
-nhn.husky.EZCreator.createInIFrame({
-	oAppRef: oEditors,
-	elPlaceHolder: "content", //에디터가 적용될 <textarea>의 id를 입력
-	sSkinURI: "/resources/se2/SmartEditor2Skin.html",
-	fCreator: "createSEditor2"
-})
-</script>
 
 <%@ include file="../layout/footer.jsp" %>

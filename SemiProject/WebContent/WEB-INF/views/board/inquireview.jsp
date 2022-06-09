@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@page import="web.dto.Inquire"%>
 <%@page import="web.dto.InquireFile"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -20,7 +20,6 @@ $(document).ready(function() {
 	//게시글 수정 버튼
 	$("#btnUpdate").click(function() {
 		console.log("클릭")
-		
 		$(location).attr("href", "<%=request.getContextPath() %>/board/inquireupdate?idx=<%=viewInquireBoard.getIdx() %>");
 	})
 	
@@ -97,53 +96,63 @@ a:hover {
 #btnDelete {
 	float: right;
 } 
-
-
-}
 </style>
+
 <br><br><br><br><br><br><br><br>
+
 <div class="container">
 
 <br>
+
 <a href="<%=request.getContextPath() %>/board/inquirelist">문의 게시판 ></a>
+
 <h2><%=viewInquireBoard.getInquireTitle() %></h2>
-<div><%=viewInquireBoard.getUsernick() %> (작성자)</div>
-<div style="font-size: 12px; color: #ccc;"><%=viewInquireBoard.getCreateDate() %> 조회 <%=viewInquireBoard.getInquireHits() %></div>
-<hr>
 
-<div style="margin: 5px;">
-<%=viewInquireBoard.getInquireContent() %>
-</div>
-<br>
-<hr>
+	<div><%=viewInquireBoard.getUsernick() %> (작성자)</div>
+	<div style="font-size: 12px; color: #ccc;"><%=viewInquireBoard.getCreateDate() %> 조회 <%=viewInquireBoard.getInquireHits() %></div>
+	<hr>
 
+	<div style="margin: 5px;">
+		<%=viewInquireBoard.getInquireContent() %>
+	</div>
 
-<!-- 첨부파일 -->
-<div style="margin: 5px;">
-첨부파일 목록
-<%	if( inquireFile != null ) { %>
-<a href="<%=request.getContextPath() %>/upload/<%=inquireFile.getFileSto() %>"
- download="<%=inquireFile.getFileOri() %>">
-	<%=inquireFile.getFileOri() %>
-</a>
-<%	} %>
-</div>
-<hr>
+	<br>
 
-<div class="text-center">
-	<button id="btnList" class="btnMenu">목록</button>
-	<%	if( Integer.parseInt(String.valueOf(session.getAttribute("user_no"))) == viewInquireBoard.getUserno() 
-		|| String.valueOf(session.getAttribute("user_rank")).equals("0") ) { %>
-	<button id="btnDelete" class="btnMenu">삭제</button>
-	<%	} %>
-	<%	if( Integer.parseInt(String.valueOf(session.getAttribute("user_no"))) == viewInquireBoard.getUserno() ) { %>
-	<button id="btnUpdate" class="btnMenu">수정</button>
-	<%	} %>
-</div>
-<br><br>
-<hr>
+	<hr>
 
-</div><!-- .container -->
+	<!-- 첨부파일 -->
+	<div style="margin: 5px;">
+		첨부파일 목록
+		<%	if( inquireFile != null ) { %>
+			<a href="<%=request.getContextPath() %>/upload/<%=inquireFile.getFileSto() %>"
+				 download="<%=inquireFile.getFileOri() %>">
+				<%=inquireFile.getFileOri() %>
+			</a>
+		<%	} %>
+	</div>
+	
+	<hr>
+
+	<div class="text-center">
+		<button id="btnList" class="btnMenu">목록</button>
+		
+		<%	if( Integer.parseInt(String.valueOf(session.getAttribute("user_no"))) == viewInquireBoard.getUserno() 
+			|| String.valueOf(session.getAttribute("user_rank")).equals("0") ) { %>
+			
+			<button id="btnDelete" class="btnMenu">삭제</button>
+		<%	} %>
+		
+		<%	if( Integer.parseInt(String.valueOf(session.getAttribute("user_no"))) == viewInquireBoard.getUserno() ) { %>
+			<button id="btnUpdate" class="btnMenu">수정</button>
+		<%	} %>
+	</div>
+	
+	<br><br>
+	
+	<hr>
+
+</div><!-- container -->
+
 <br><br><br><br><br><br><br><br><br><br>
 
 <%@ include file="../layout/footer.jsp" %>

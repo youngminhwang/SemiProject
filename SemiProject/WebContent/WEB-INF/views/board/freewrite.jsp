@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -34,7 +33,9 @@ function submitContents( elClickedObj ) {
 	try {
 		//<form>태그의 submit을 수행한다
 		elClickedObj.form.submit();
-	} catch(e) {}
+	} catch(e) {
+		
+	}
 	
 }
 </script>
@@ -63,7 +64,6 @@ function submitContents( elClickedObj ) {
 	padding-right: 7px;
  	background: #EFF0F2;
 	color: black; 
-	
  	border-radius: 5px; 
  	margin: 5px;
  	float: right;
@@ -73,49 +73,50 @@ function submitContents( elClickedObj ) {
 <div class="container">
 
 <br><br><br><br>
+
 <h3><b>자유게시판 글쓰기</b></h3>
-<hr>
-
-<div>
-<form action="./freewrite" method="post" enctype="multipart/form-data">
-
-<textarea id="title" name="title" placeholder="제목을 입력하세요."></textarea>
-
-<%@ include file="../layout/boardrule.jsp" %>
-
-<textarea id="content" name="content" placeholder="내용을 입력하세요."></textarea>
 
 <hr>
+	
+	<div>
+		<form action="./freewrite" method="post" enctype="multipart/form-data">
+	
+		<textarea id="title" name="title" placeholder="제목을 입력하세요."></textarea>
+	
+		<%@ include file="../layout/boardrule.jsp" %>
+		
+		<textarea id="content" name="content" placeholder="내용을 입력하세요."></textarea>
+		
+		<script type="text/javascript">
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "content", //스킨을 적용할 <textarea>의 id를 적어준다
+			sSkinURI: "../resources/se2/SmartEditor2Skin.html",
+			fCreate: "createSEditor2"
+		})
+		</script>		
+		
+		<hr>
+	
+		첨부파일 <input type="file" name="file">
+	
+		</form>
+	</div>
+	
+	<br>
+	
+	<hr>
 
-첨부파일 <input type="file" name="file">
+	<div>	
+		<button type="button" id="btnCancel" class="btnMenu">취소</button>
+		<button type="button" id="btnWrite" class="btnMenu">등록</button>
+	</div>
 
-</form>
-</div>
-<br>
-<hr>
-
-<div>	
-	<button type="button" id="btnCancel" class="btnMenu">취소</button>
-	<button type="button" id="btnWrite" class="btnMenu">등록</button>
-</div>
-<!-- .container -->
-</div>
-<br><br><br><br><br><br>
-
-
-
+</div><!-- container -->
 <!-- <textarea>태그에 스마트에디터2를 스킨 적용하는 스크립트 -->
-<script type="text/javascript">
-var oEditors = [];
-nhn.husky.EZCreator.createInIFrame({
-	oAppRef: oEditors,
-	elPlaceHolder: "content", //스킨을 적용할 <textarea>의 id를 적어준다
-	sSkinURI: "../resources/se2/SmartEditor2Skin.html",
-	fCreate: "createSEditor2"
-})
-</script>
 
-
+<br><br><br><br><br><br>
 
 <%@ include file="../layout/footer.jsp" %>
 

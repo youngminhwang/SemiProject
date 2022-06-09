@@ -15,7 +15,7 @@ public class JDBCTemplate {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	
 	//Oracle_DB 계정 정보 Set
-	private static final String USERNAME = "hym";
+	private static final String USERNAME = "semiproject";
 	private static final String PASSWORD = "1234";
 	
 	//private 생성자(= Singleton_Pattern 적용)

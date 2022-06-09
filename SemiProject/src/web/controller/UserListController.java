@@ -28,7 +28,6 @@ public class UserListController extends HttpServlet {
 		//1. 로그인 되어있지 않으면 리다이렉트
 		if (req.getSession().getAttribute("login") == null) {
 			resp.sendRedirect("/");
-			
 			return;
 		}
 		

@@ -360,7 +360,6 @@ public class FreeServiceImpl implements FreeService {
 			JDBCTemplate.rollback(conn);
 		}
 		
-		
 		//첨부파일 정보 삽입
 		if( freeFile.getFileSize() != 0 ) {
 			freeFile.setIdx(idx);

@@ -1,17 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@page import="web.dto.CafeInfo"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
+
 <%CafeInfo viewCafeInfo = (CafeInfo) request.getAttribute("viewCafe"); %>
+
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
+
 <title>리뷰 작성</title>
+
 <script type="text/javascript">
 function checkFile(f){
-	
-	
 
 	// files 로 해당 파일 정보 얻기.
 	var file = f.files;
@@ -31,6 +34,7 @@ $(function() {
     readURL(this);
     });
 });
+
 function readURL(input) {
 	
     if (input.files && input.files[0]) {
@@ -42,10 +46,7 @@ function readURL(input) {
     }
 }
 
-
 $(document).ready(function() {
-	
-	
 	
 	//작성버튼 동작
 	$("#btnWrite").click(function() {
@@ -65,6 +66,7 @@ $(document).ready(function() {
 	});
 	
 });
+
 $(function() {
     $("#myFile").on('change', function(){
     readURL(this);
@@ -87,8 +89,8 @@ function starToPercent() {
     return score + 1;
 }
 
-
 </script>
+
 <style type="text/css">
 #View{
 	width :150px;
@@ -97,13 +99,13 @@ function starToPercent() {
 
  .star{ 
  	margin: 0 auto; 
- } 
+} 
 
  .staron{ 
    position: absolute; 
    top: 0px; 
    left: 0px; 
- } 
+} 
 .review{
 	width:50px; 
  	heighr:50px;
@@ -121,10 +123,12 @@ textarea{
 #myFile{
 	display: none;
 }
+
 #plus{
 	width: 100%;
 	
 }
+
 .star-star {
   display: flex;
   flex-direction: row-reverse;
@@ -161,6 +165,7 @@ table{
 	text-align: center;
 	border: 1px solid #b2876f;
 }
+
 file{
 	border :none;
 }
@@ -185,7 +190,7 @@ file{
 /* 	font-size:1.100rem; */
 	color: #ccc;
     background-position: 99% 50%;
-  }
+}
 
 .bottom{
 	text-align:center;
@@ -193,14 +198,16 @@ file{
 	margin:0 auto;
 	
 }
+
 #content:focus {
 	outline: none;
 }	
-
 </style>
 
 </head>
+
 <body>
+
 <br><br><br><br><br>
 <!-- <form action="/review/write" method="post" name="cmtform" enctype="multipart/form-data"> -->
 
@@ -213,7 +220,6 @@ file{
 
 <tr>
 	<td rowspan="2" width="100px" class="file">
-	
 		<label for="myFile" >
 			<img src="../resources/img/plus.jpg" id="plus" name="file"  class="file">	
 		</label>
@@ -234,32 +240,26 @@ file{
 				<input type="radio" id="1-star" name="star" value="1" class="star"/>
 				<label for="1-star" class="star">★</label>
 			</div>
-		
 		</div>
 		
-		
-	<input type="hidden" name="cafeinfo" id="cafeinfo" value="<%=viewCafeInfo.getCafe_no()%>">
-		
+		<input type="hidden" name="cafeinfo" id="cafeinfo" value="<%=viewCafeInfo.getCafe_no()%>">	
 	</td>
-	
-	
-	
-	
 </tr>
+
 <tr>
 	<td><textarea id="content" name="content" placeholder="리뷰를 입력하세요."></textarea></td>
 </tr>
 </table>
-<div class="file">
 
-</div>
-
+<div class="file"></div>
 
 </form>
+
 <div class="bottom">
 	<button name="submit" id="btnWrite" class="gradient-btn" style="margin-right: 5px;"><b>등록</b></button>
 	<button name="submit" id="btnCancel" class="gradient-btn" style="margin-left: 5px;"><b>취소</b></button><br>	
 </div>
+
 <br><br><br><br><br><br><br><br>
 
 <%@ include file="../layout/footer.jsp" %>

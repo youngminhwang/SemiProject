@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <!-- jQuery 2.2.4 -->
@@ -13,8 +14,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <meta charset="UTF-8">
-<title>++관리자페이지++</title>
 
+<title>++관리자페이지++</title>
 
 <style type="text/css">
 #header, #footer {
@@ -57,7 +58,6 @@ div li a:hover {
 	margin-left: 15%;
 	height: 100%
 }
-
 </style>
 
 </head>
@@ -66,31 +66,23 @@ div li a:hover {
 
 <div id="wrap">
 
-
 <section>
-<!-- <div id="header"> -->
-	
-<!-- 	<!-- header.jsp 의 로고(상단 텍스트)에 "/" 로 <a> 를 적용 -->
-<!-- 	<h1 ><a href = "/">관리자페이지</a></h1> -->
 
-<!-- </div> -->
+	<div id="sidemenu">
+		<ul id="menu">
 
-<div id="sidemenu">
+		<div>
+			<h1 ><a href = "/" style="text-decoration: none; color: #FFF;">MAIN</a></h1>
+		</div>
 
-<ul id="menu">
-
-<div>
-	<h1 ><a href = "/" style="text-decoration: none; color: #FFF;">MAIN</a></h1>
-</div>
-
-<br><br><br>
-	<li><a href="/board/userlist">회원 관리</a></li>
-	<li><a href="/board/boardadmin">게시판 관리</a></li>
-	<li><a href="/cafe/cafelist">카페 관리</a></li>
-	<li><a href="/tag/taglist">태그 관리</a></li>
-</ul>
-</div>
+		<br><br><br>
+		
+			<li><a href="/board/userlist">회원 관리</a></li>
+			<li><a href="/board/boardadmin">게시판 관리</a></li>
+			<li><a href="/cafe/cafelist">카페 관리</a></li>
+			<li><a href="/tag/taglist">태그 관리</a></li>
+		</ul>
+	</div>
 </section>
-</div>
 
-	
+</div><!-- wrap end -->

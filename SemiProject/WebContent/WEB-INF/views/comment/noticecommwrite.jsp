@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <style type="text/css">
 div.comment_write {
@@ -34,29 +33,29 @@ div.comment_usernick {
 	background: white;
 	color: #ccc;
 }
-
 </style>
 
-<%	if( session.getAttribute("login") != null && (boolean) session.getAttribute("login") ) { %>
-<form action="/board/noticeview" method="post" class="insertForm">
-<input type="hidden" name="idx" value="<%=viewNoticeBoard.getIdx() %>" />
-<div class="comment_write">
-	<div class="comment_in">
+<%if( session.getAttribute("login") != null && (boolean) session.getAttribute("login") ) { %>
+	<form action="/board/noticeview" method="post" class="insertForm">
+		<input type="hidden" name="idx" value="<%=viewNoticeBoard.getIdx() %>" />
 	
-		<div class="comment_usernick">
-		<b><%=session.getAttribute("user_nick") %></b>
-		</div>
+	<div class="comment_write">
+		<div class="comment_in">
+			<div class="comment_usernick">
+				<b><%=session.getAttribute("user_nick") %></b>
+			</div>
 
-		<div class="comment_insert">
-			<textarea id="commcnt" name="commcnt" placeholder="댓글을 입력하세요." style="width: 900px; height: 30px;"></textarea>
-		</div>
-		
-		<div>
-			<button type="button" id="btnInsert" data-btn="insert">등록</button>
+			<div class="comment_insert">
+				<textarea id="commcnt" name="commcnt" placeholder="댓글을 입력하세요." style="width: 900px; height: 30px;"></textarea>
+			</div>
+			
+			<div>
+				<button type="button" id="btnInsert" data-btn="insert">등록</button>
+			</div>
 		</div>
 	</div>
-</div>
-</form>
+	
+	</form>
 
-<hr>
+	<hr>
 <%	} %>
